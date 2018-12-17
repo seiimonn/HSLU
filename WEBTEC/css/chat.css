@@ -1,0 +1,685 @@
+/* Main chat container */
+
+
+#chatContainer{
+	background-color: #1111117d;
+	width:60vw;
+	height: 70vh;
+	position:relative;
+	padding: 1%;
+	margin-right: 20vw;
+	margin-top: 15vh;
+	float:right;
+	grid-area: content;
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	grid-template-rows: repeat(10, 1fr);
+	
+	grid-template-areas:
+    'header header header header header header'
+    'chat chat chat chat chat user'
+    'chat chat chat chat chat user'
+    'chat chat chat chat chat user'
+    'chat chat chat chat chat user'
+    'chat chat chat chat chat user'
+    'chat chat chat chat chat user'
+    'chat chat chat chat chat user'
+    'chat chat chat chat chat user'
+    'bottom bottom bottom bottom bottom bottom';
+}
+
+
+/* Top Bar */
+
+
+#chatTopBar{
+	grid-area: header;
+	background-color: #1111117d;
+	margin-bottom: 10px;
+	color:#FFFFFF;
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	grid-template-areas:
+    'userContainer userContainer userContainer userContainer userContainer buttonContainer';
+}
+
+#chatTopBar .name{
+	top:10px;
+	left:40px;
+}
+
+#chatTopBar img{
+	left:9px;
+	top:8px;
+}
+
+#buttonContainer {
+	grid-area: buttonContainer;
+	width: 	100%;
+	height: 100%;
+}
+
+#userContainer {
+	width: 100%;
+	height: 100%;
+	grid-area: userContainer;
+	display: flex;
+	align-items: center;
+}
+
+/* Chats */
+
+
+#chatLineHolder{
+	grid-area: chat;
+	overflow-x: auto;
+}
+
+.chat{
+	background:#1111118c;
+	min-height:24px;
+	padding:6px;
+	
+	position:relative;
+	margin:0 10px 10px 0;
+	
+	display: grid;
+	grid-template-columns: repeat(10, 1fr);
+
+}
+
+.chatLineInfo {
+	grid-area: chatLineInfo;
+	grid-column: 1/2;
+	
+	display: flex;
+	align-items: center;
+}
+
+.chat .author {
+	margin-left: 0.2vw;
+}
+
+.chatTextBox {
+	grid-area: chatText;
+	grid-column: 2/10;
+}
+
+.deleteMessageBox {
+	grid-area: deleteMessageBox;
+	grid-column: 10/10;
+}
+
+.chatText {
+	white-space: pre-wrap; /* css-3 */
+	white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+	white-space: -pre-wrap; /* Opera 4-6 */
+	white-space: -o-pre-wrap; /* Opera 7 */
+	word-wrap: break-word; /* Internet Explorer 5.5+ */
+	word-break: break-all;
+}
+
+.chat:last-child{
+	margin-bottom:0;
+}
+
+.chat span{
+	color:#FFFFFF;
+	font-size:12px;
+}
+
+.chat .text{
+	color:#FFFFFF;
+	display:inline-block;
+	font-size:15px;
+	overflow:hidden;
+	vertical-align:top;
+	width:190px;
+}
+
+.chat .gravatar{
+	left:7px;
+	position:absolute;
+	top:7px;
+}
+
+.chat img{
+	display:block;
+	visibility:hidden;
+}
+
+.chat .time{
+	position:absolute;
+	right:10px;
+	top:12px;
+	font-size:11px;
+}
+
+.chat .author{
+	margin-right:6px;
+	font-size:11px;
+}
+
+
+/* Chat User Area */
+
+
+#chatUsers{
+	grid-area: user;
+}
+
+#chatUsers .user{
+	background:url('http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?size=30') no-repeat 1px 1px #444444;
+	border:1px solid #111111;
+	float:left;
+	height:32px;
+	margin:10px 0 0 10px;
+	width:32px;
+}
+
+#chatUsers .user img{
+	border:1px solid #444444;
+	display:block;
+	visibility:hidden;
+}
+
+
+/* Bottom Bar */
+
+
+#chatBottomBar{
+	grid-area: bottom;
+	color: white;
+	height: 100%;
+	margin-top: 10px;
+}
+
+#chatText {
+	grid-area: submitInput;
+	padding-left:20px;
+}
+
+#submitForm{
+	height: 100%;
+	display:none;
+	grid-template-columns: repeat(6, 1fr);	
+	grid-template-areas:
+    'submitInput submitInput submitInput submitInput submitInput submitButton';	
+}
+
+.blackButton {
+	grid-area: submitButton;
+	background-color: black;
+	font-size: 15px;
+}
+
+#loginForm {
+	display:none;
+	height: 100%;
+	grid-template-columns: 4fr 4fr 1fr 1fr;
+	grid-template-areas: 'loginName loginPW loginSubmit loginRegister';
+}
+
+#loginSubmitButton {
+	grid-area: loginSubmit;
+}
+
+#registerButton {
+	grid-area: loginRegister;
+}
+
+#registerForm {
+	display:none;
+	height: 100%;
+	grid-template-columns: repeat(6, 1fr);
+	grid-template-areas:
+	'registerName registerName registerMail registerMail registerPassword registerSubmit';
+}
+
+#registerName {
+	grid-area: registerName;
+}
+	
+#registerMail{
+	grid-area:registerMail;
+}
+
+#registerPassword {
+	grid-area: registerPassword;
+}
+
+#registerSubmit {
+	grid-area: registerSubmit;
+}
+
+/* Overloading the default styles of jScrollPane */
+
+
+.jspVerticalBar{
+	background:none;
+	width:20px;
+}
+
+.jspTrack{
+	background-color:#202020;
+	border:1px solid #111111;
+	width:3px;
+	right:-10px;
+}
+
+.jspDrag {
+	background:url('../img/slider.png') no-repeat;
+	width:20px;
+	left:-9px;
+	height:20px !important;
+	margin-top:-5px;
+}
+
+.jspDrag:hover{
+	background-position:left bottom;
+}
+
+
+/* Additional styles */
+
+.adminButton{
+	background-color:black;
+	color:#FFFFFF !important;
+	font-size:15px;
+	width: 50%;
+	height: 100%;
+	-moz-box-shadow:0 0 7px #888 inset;
+	-webkit-box-shadow:0 0 7px #888 inset;
+	box-shadow:0 0 7px #888 inset;
+}
+
+.logoutButton{
+	background-color:black;
+	color:#FFFFFF !important;
+	font-size:15px;
+	width: 50%;
+	height: 100%;
+	text-align: center;
+	-moz-box-shadow:0 0 7px #888 inset;
+	-webkit-box-shadow:0 0 7px #888 inset;
+	box-shadow:0 0 7px #888 inset;
+}
+
+.logoutButton:hover{
+	text-shadow:1px 1px 0 #888;
+	
+	-moz-box-shadow:0 0 7px #666 inset;
+	-webkit-box-shadow:0 0 7px #666 inset;
+	box-shadow:0 0 7px #666 inset;
+}
+
+p.noChats,
+#chatUsers .count{
+	clear:both;
+	font-size:12px;
+	padding:10px;
+	text-align:center;
+	text-shadow:1px 1px 0 #111111;
+}
+
+#chatUsers .count{
+	font-size:11px;
+}
+
+.rounded{
+	/* -moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px; */
+}
+
+#chatErrorMessage{
+	width:100%;
+	top:0;
+	left:0;
+	position:fixed;
+	background-color:#ab0909;
+	border-bottom:1px solid #d32a2a;
+	font-size:23px;
+	padding:16px;
+	text-align:center;
+	color:#fff;
+	
+	text-shadow:1px 1px 0 #940f0f;
+}
+
+#chatSuccessMessage{
+	width:100%;
+	top:0;
+	left:0;
+	position:fixed;
+	background-color:#00ff00;
+	border-bottom:1px solid #d32a2a;
+	font-size:23px;
+	padding:16px;
+	text-align:center;
+	color:#fff;
+	
+	text-shadow:1px 1px 0 #940f0f;
+}
+
+/* Admin Panel */
+
+#adminPanel {
+	
+	display:none;
+	height: 100%;
+	width: 100%;
+	grid-column: 1/7;
+	grid-row: 2/11;
+	overflow-x: auto;
+}
+
+#userAdminTopBarMain {
+	display: grid;
+	grid-template-columns: repeat(11, 1fr);
+	grid-template-areas: 'userPictureTopBar userNameTopBar userNameTopBar userNameTopBar userEmailTopBar userEmailTopBar userEmailTopBar userActiveTopBar userAdminTopBar userSaveTopBar userDeleteTopBar';
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+	border-bottom: 2px solid black;
+}
+
+#userPictureTopBar {
+	grid-area: userPictureTopBar;
+	display: flex;
+	justify-content: center;
+}
+
+#userNameTopBar {
+	grid-area: userNameTopBar;
+}
+
+#userEmailTopBar {
+	grid-area: userEmailTopBar;
+}
+
+#userActiveTopBar {
+	grid-area: userActiveTopBar;
+	display: flex;
+	justify-content: center;
+}
+
+#userAdminTopBar {
+	grid-area: userAdminTopBar;
+	display: flex;
+	justify-content: center;
+}
+
+#userSaveTopBar {
+	grid-area: userSaveTopBar;
+	display: flex;
+	justify-content: center;
+}
+
+#userDeleteTopBar {
+	grid-area: userDeleteTopBar;
+	display: flex;
+	justify-content: center;
+}
+
+.userAdmin {
+	display: grid;
+	grid-template-columns: 1fr 3fr 3fr 3fr 1fr;
+	grid-template-areas: 'userPicture userName userEmail userSaveForm userDeleteForm';
+	margin-bottom: 10px;
+}
+
+.userPicture {
+	grid-area: userPicture;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.userName {
+	grid-area: userName;
+	display: flex;
+	align-items: center;
+}
+
+.userEmail {
+	grid-area: userEmail;
+	display: flex;
+	align-items: center;
+}
+
+.userActiveCheckbox {
+	grid-area: userActive;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+}
+
+.userAdminCheckbox {
+	grid-area: userAdmin;	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+}
+
+.userSaveButtonDiv {
+	grid-area: userSave;	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.userDeleteButtonDiv {
+	grid-area: userDelete;	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	width: 100%;
+}
+
+.userActiveCheckboxDiv {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.userAdminCheckboxDiv {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.userSaveForm {
+	grid-area: userSaveForm;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-areas: 'userActive userAdmin userSave';
+}
+
+.userDeleteForm {
+	grid-area: userDeleteForm;
+	display: grid;
+}
+
+.userAdminDeleteButton {
+	height: 100%;
+	width: 100%;
+	border-left: 1px solid black;
+}
+
+.userAdminSaveButton {
+	height: 100%;
+	width: 100%;
+	border-right: 1px solid black;
+}
+
+.mobileDescription {
+	display: none;
+}
+
+
+/* MEDIA QUERIES */
+	
+@media only screen and (max-device-width: 480px)
+	{
+		#chatContainer{
+			height: 100vh;
+			width: 100vw;
+			margin: 0;
+			padding: 0;
+			
+			grid-template-columns: repeat(4, 1fr);
+			grid-template-rows: repeat(10, 1fr);
+			
+			grid-template-areas:
+				'header header header header'
+				'chat chat chat chat'
+				'chat chat chat chat'
+				'chat chat chat chat'
+				'chat chat chat chat'
+				'chat chat chat chat'
+				'chat chat chat chat'
+				'chat chat chat chat'
+				'chat chat chat chat'
+				'bottom bottom  bottom bottom';
+		}
+		
+		#footer {
+			display: none !important;
+		}
+		
+		#chatUsers {
+			display:none !important;
+		}
+		
+		.chat {
+			min-height: 7vh;
+			display: flex;
+		}
+		
+		.chat img {
+			height: 5vh;
+			width: 5vh;
+			margin-top: 1vh;
+		}
+		
+		.chat .author {
+			height: 5vh;
+			margin-top: 1vh;
+			margin-left: 1vh;
+			font-size: 2vh;
+		}
+		
+		.chatText {
+			min-height: 5vh;
+			margin-top: 1vh;
+			font-size: 3vh;
+			word-break: break-word;
+		}
+		
+		.deleteMessageForm {
+			display: none;
+		}
+		
+		input, textarea {
+			font-size: 2.5em !important;
+		}
+		
+		#chatTopBar .name {
+			font-size: 3em;
+		}
+		
+		#buttonContainerMobile{
+			display: block !important;
+		}
+		
+		#buttonContainerAdmin{
+			display: none;
+		}
+		
+		#adminNav{
+			width: 100%;
+			height: 100%;
+		}
+		
+		#userImage {
+			width: 5vh !important;
+			height: 5vh !important;
+			padding-left: 6px;
+		}
+		
+		#loginForm {
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: 1fr 1fr;
+			grid-template-areas: 'loginName loginPW' 'loginRegister loginSubmit';
+		}
+		
+		#userAdminTopBarMain {
+			display: none;
+		}
+		
+		.userPicture {
+			display: none;
+		}
+		
+		.userName {
+			font-size: 3em;
+		}
+		
+		.userEmail {
+			font-size: 3em;
+		}
+		
+		.userAdmin {
+			padding-top: 1em;
+			border-bottom: 1em solid black;
+			
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: 1fr 1fr;
+			grid-template-areas: 'userName userEmail' 'userSaveForm userDeleteForm';
+		}
+		
+		.userActiveCheckbox {
+			width: 100%;
+		}
+		
+		.userAdminCheckbox {
+			width: 100%;
+		}
+		
+		.mobileDescription {
+			display: block;
+			font-size: 1.4em;
+		}
+	} 
+	
+@media (min-width: 768px) and (max-width: 1024px) {
+	#chatContainer{
+			height: 100vh;
+			width: 100vw;
+			margin: 0;
+			padding: 0;
+	}
+	
+	#footer {
+		display: none;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  
+	#chatContainer{
+			height: 100vh;
+			width: 100vw;
+			margin: 0;
+			padding: 0;
+	}
+	
+	#footer {
+		display: none;
+	}
+}

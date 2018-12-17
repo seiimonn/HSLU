@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Making an AJAX Web Chat With PHP, MySQL and jQuery </title>
+
+<link rel="stylesheet" type="text/css" href="css/page.css" />
+<link rel="stylesheet" type="text/css" href="css/chat.css" />
+
+</head>
+
+<body>
+
+<div id="gridContainer">
+	<div id="chatContainer">
+		<div id="chatTopBar" class="rounded"></div>
+		<div id="adminPanel"></div>
+		<div id="chatLineHolder"></div>
+		
+		
+		<div id="chatUsers" class="rounded"></div>
+		<div id="chatBottomBar" class="rounded">
+			<form id="loginForm" method="post" action="">
+				<input id="nameormail" name="nameormail" class="rounded" maxlength="64" value="Name / Mail" autocomplete="off"/>
+				<input id="pwLogin" name="pw" type="password" class="rounded" value="PW"/>
+				<input id="loginSubmitButton" type="submit" class="blackButton" value="Login" />
+				<input id="registerButton" type="button" class="blackButton" value="Register"/>
+			</form>
+			
+			<form id="registerForm" method="post" action="">
+				<input id="registerName" name="name" class="rounded" maxlength="16" value="Name" autocomplete="off"/>
+				<input id="registerMail" name="email" class="rounded" value="Mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Enter a valid email" autocomplete="off"/>
+				<input id="registerPW" name="pw" type="password" class="rounded" value="PW" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[ -/:-@\[-`{-~]).{6,64}$" title="Your password must contain 6 letters, numbers and special characters"/>
+				<input id="registerSubmit" type="submit" class="blackButton" value="Register" />
+			</form>
+			
+			<form id="submitForm" method="post" action="">
+				<input id="chatText" type="text" name="chatText" class="rounded" maxlength="255" autocomplete="off"/>
+				<input id="submitButton" type="submit" class="blackButton" value="Submit" />
+				
+			</form>
+		</div>
+	</div>
+</div>
+
+<div id="footer">
+	<a href="https://tutorialzine.com/2010/10/ajax-web-chat-php-mysql">Making an AJAX Web Chat With PHP and jQuery</a>
+	<a href="https://github.com/seiimonn/HSLU_WEBTEC" style="float: right">Get sourcecode!</a>
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/script.js"></script>
+<script src="js/shards.js"></script>
+
+</body>
+</html>
